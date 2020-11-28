@@ -4,7 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, throwError} from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { Todo } from './todo';
+import { Todo } from '../models/todo';
 
 @Injectable({
   providedIn: 'root'
@@ -43,8 +43,8 @@ export class TodoService {
       );
   }
 
-  update(id, todo): Observable<Todo> {
-    return this.httpClient.patch<Todo>(this.apiServer + this.todoServicePath + id, JSON.stringify(todo), this.httpOptions)
+  update(jsonTodo): Observable<Todo> {
+    return this.httpClient.patch<Todo>(this.apiServer + this.todoServicePath + jsonTodo.id, jsonTodo, this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       );

@@ -1,1 +1,13 @@
-<p>update works!</p>
+<div>
+  <h1>Update Todo N° {{todoID}}</h1>
+
+  <button type="button" [routerLink]="'/todo/home/'">List Todo</button>
+
+  <form [formGroup]="checkoutForm" (ngSubmit)="updateTodo(checkoutForm.value)">
+    <label for="title">
+      Todo
+    </label>
+    <input id="title" type="text" formControlName="title">
+    <button class="button" type="submit">UPDATE</button>
+  </form>
+</div>

@@ -1,1 +1,30 @@
-<p>home works!</p>
+<div>
+  <h1>TodoList</h1>
+  <button type="button" [routerLink]="'/todo/create/'">Add Todo</button>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Completed</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+<!--      TODO implement pipe noCompletedTodo (list todo.completed false)-->
+      <tr *ngFor="let todo of todos">
+        <td>{{todo.id}}</td>
+        <td>{{todo.title}}</td>
+        <td>{{todo.completed}}</td>
+        <td>
+          <button type="button" [routerLink]="['/todo/info/', todo.id]">Info</button>
+          <button type="button" [routerLink]="['/todo/update/', todo.id]">Update</button>
+          <button *ngIf="!todo.completed" type="button" (click)="completed({id: todo.id, completed: true})">Completed</button>
+          <button *ngIf="todo.completed" type="button" (click)="completed({id: todo.id, completed: false})">Not Completed</button>
+          <button type="button" (click)="delete(todo.id)">Remove</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

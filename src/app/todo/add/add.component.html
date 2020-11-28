@@ -1,1 +1,13 @@
-<p>add works!</p>
+<div>
+  <h1>Add Todo</h1>
+
+  <button type="button" [routerLink]="'/todo/home/'">List Todo</button>
+
+  <form [formGroup]="checkoutForm" (ngSubmit)="addTodo(checkoutForm.value)">
+    <label for="title">
+      Todo
+    </label>
+    <input id="title" type="text" formControlName="title">
+    <button class="button" type="submit">ADD</button>
+  </form>
+</div>
